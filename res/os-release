@@ -1,0 +1,8 @@
+NAME="{name}"
+ID="{id}"
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="{ansi_color}"
+HOME_URL="{home_url}"
+SUPPORT_URL="{support_url}"
+BUG_REPORT_URL="{bug_report_url}"

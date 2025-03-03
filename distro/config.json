@@ -1,0 +1,11 @@
+{
+    "arch": "x86_64",
+    "name": "A Linux Distro",
+    "id": "alinuxdistro",
+    "ansi_color": "0;36",
+    "home_url": "https://example.com",
+    "support_url": "https://example.com/support",
+    "bug_report_url": "https://example.com/bug-report",
+    "liveiso_hostname": "linuxiso",
+    "packages": []
+}
