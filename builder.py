@@ -1,6 +1,8 @@
 import json
 import os
 
+executables = []
+
 def logruns(logmsg: str = None, endmsg: str = None):
     def decorator(func):
         def wrapper(*args, **kwargs):
@@ -13,6 +15,8 @@ def logruns(logmsg: str = None, endmsg: str = None):
 
 def make_executable(fn: str):
     os.chmod(fn, 0o755)
+    executables.append(fn.removesuffix('./archiso/airootfs'))
+    print(' * made executable', fn)
 
 def load_file(fn: str) -> str:
     with open(fn, 'r') as f:
@@ -38,6 +42,18 @@ def load_profiledef(dat: dict = None) -> str:
     dat['id-upper'] = dat['id'].upper()
     for k, v in dat.items():    
         f = f.replace('{' + k + '}', f'{v}')
+    
+    lines = f.split('\n')[:-1]
+    for i in executables:
+        lines.append(f'  ["{i}"]="0:0:755"')
+    
+    f = '\n'.join(lines)
+
+    print()
+    print('[profiledef.sh]')
+    print(f)
+    print()
+
     return f
 
 @logruns()
