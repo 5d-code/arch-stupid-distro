@@ -1,8 +1,0 @@
-#!/usr/bin/python3
-
-# this is the script that will get ran first thing when the live iso boots up
-# it doesnt need to be python, you can make it be a shell script or a binary
-# just make sure it is executable and has a shebang line
-# this script is ran as root
-# you use this script to collect information about how to install the system
-# and then install the system
