@@ -148,11 +148,10 @@ def set_iso_hostname():
     with open('./archiso/airootfs/etc/hostname', 'w') as f:
         f.write(config['liveiso_hostname'])
 
-@logruns('add installer')
-def add_installer():
-    p = './archiso/airootfs/root/installer'
-    os.system(f'cp ./distro/installer {p}')
-    make_executable(p)
+@logruns('adding home')
+def add_home():
+    os.makedirs('./archiso/airootfs/root', exist_ok=True)
+    os.system(f'cp -r ./distro/home/* ./archiso/airootfs/root')
 
 @logruns('add os-release')
 def add_os_release():
@@ -178,7 +177,7 @@ def build_base():
     add_zshrc()
     add_i3config()
     add_splash()
-    add_installer()
+    add_home()
     add_os_release()
     add_profiledef()
 
