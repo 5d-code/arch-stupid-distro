@@ -153,6 +153,8 @@ def add_home():
     os.makedirs('./archiso/airootfs/root', exist_ok=True)
     os.system(f'cp -r ./distro/home/* ./archiso/airootfs/root')
 
+    make_executable('./archinstall/airootfs/root/installer')
+
 @logruns('add os-release')
 def add_os_release():
     with open('./archiso/airootfs/etc/os-release', 'w') as f:
